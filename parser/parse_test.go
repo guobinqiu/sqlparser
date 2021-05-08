@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestBlock(t *testing.T) {
+func TestDocumentParse(t *testing.T) {
 	s := `
 select *
 from (select * from (select * from t1 union all
@@ -112,6 +112,22 @@ func TestSet(t *testing.T) {
 	s := `
 declare @date date
 set @date=dateadd(dd, 1, @date)
+`
+	doc := NewSqlDocument(s)
+	sql, _ := Parse(doc)
+	fmt.Println(sql.PgSql())
+}
+
+func TestBlockParse(t *testing.T) {
+	s := `
+begin
+select *
+from (select * from (select * from t1 union all
+select * from t1) a)
+b select * from t2 insert into t1(name,age)
+values('xyz', 1)
+select * into t1 from t2 insert into t1 select * from t2
+end
 `
 	doc := NewSqlDocument(s)
 	sql, _ := Parse(doc)
