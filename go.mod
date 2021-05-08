@@ -1,4 +1,4 @@
-module report
+module sqlparser
 
 go 1.13
 
