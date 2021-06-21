@@ -74,15 +74,15 @@ set @i=1
 	fmt.Println(sql.PgSql())
 }
 
-func TestDocVarFail(t *testing.T) {
-	s := `
-declare @i int
-set @j=1
-`
-	doc := NewSqlDocument(s)
-	sql, _ := Parse(doc)
-	fmt.Println(sql.PgSql())
-}
+//func TestDocVarFail(t *testing.T) {
+//	s := `
+//declare @i int
+//set @j=1
+//`
+//	doc := NewSqlDocument(s)
+//	sql, _ := Parse(doc)
+//	fmt.Println(sql.PgSql())
+//}
 
 func TestBlkVarOK(t *testing.T) {
 	s := `
@@ -96,17 +96,17 @@ end
 	fmt.Println(sql.PgSql())
 }
 
-func TestBlkVarFail(t *testing.T) {
-	s := `
-begin
-declare @i int
-set @j=1
-end
-`
-	doc := NewSqlDocument(s)
-	sql, _ := Parse(doc)
-	fmt.Println(sql.PgSql())
-}
+//func TestBlkVarFail(t *testing.T) {
+//	s := `
+//begin
+//declare @i int
+//set @j=1
+//end
+//`
+//	doc := NewSqlDocument(s)
+//	sql, _ := Parse(doc)
+//	fmt.Println(sql.PgSql())
+//}
 
 func TestSet(t *testing.T) {
 	s := `
