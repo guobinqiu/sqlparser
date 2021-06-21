@@ -3,6 +3,8 @@ SQL转换工具
 
 通过解析语法树转换mssql到pgsql
 
+![Demo](img/demo.png)
+
 ##### TODO
 
 - [ ] error没有处理 （包括测试用例的）
